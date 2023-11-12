@@ -17,7 +17,7 @@ from .models import RolePlayingRoom
 from .forms import RolePlayingRoomForm
 
 
-# @method_decorator(staff_member_required, name="dispatch")
+@method_decorator(staff_member_required, name="dispatch")
 class RolePlayingRoomListView(ListView):
     model = RolePlayingRoom
 
@@ -30,7 +30,7 @@ class RolePlayingRoomListView(ListView):
 role_playing_room_list = RolePlayingRoomListView.as_view()
 
 
-# @method_decorator(staff_member_required, name="dispatch")
+@method_decorator(staff_member_required, name="dispatch")
 class RolePlayingRoomDetailView(DetailView):
     model = RolePlayingRoom
 
@@ -43,7 +43,7 @@ class RolePlayingRoomDetailView(DetailView):
 role_playing_room_detail = RolePlayingRoomDetailView.as_view()
 
 
-# @method_decorator(staff_member_required, name="dispatch")
+@method_decorator(staff_member_required, name="dispatch")
 class RolePlayingRoomCreateView(CreateView):
     model = RolePlayingRoom
     form_class = RolePlayingRoomForm
@@ -57,7 +57,7 @@ class RolePlayingRoomCreateView(CreateView):
 role_playing_room_new = RolePlayingRoomCreateView.as_view()
 
 
-# @method_decorator(staff_member_required, name="dispatch")
+@method_decorator(staff_member_required, name="dispatch")
 class RolePlayingRoomUpdateView(UpdateView):
     model = RolePlayingRoom
     form_class = RolePlayingRoomForm
@@ -71,7 +71,7 @@ class RolePlayingRoomUpdateView(UpdateView):
 role_playing_room_edit = RolePlayingRoomUpdateView.as_view()
 
 
-# @method_decorator(staff_member_required, name="dispatch")
+@method_decorator(staff_member_required, name="dispatch")
 class RolePlayingRoomDeleteView(DeleteView):
     model = RolePlayingRoom
     success_url = reverse_lazy("role_playing_room_list")
@@ -90,7 +90,7 @@ class RolePlayingRoomDeleteView(DeleteView):
 role_playing_room_delete = RolePlayingRoomDeleteView.as_view()
 
 
-# @staff_member_required
+@staff_member_required
 def make_voice(request):
     lang = request.GET.get("lang", "en")
     message = request.GET.get("message")
