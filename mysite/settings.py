@@ -13,6 +13,16 @@ if env_path.is_file():
     with env_path.open("rt", encoding="utf8") as f:
         env.read_env(f, overwrite=True)
 
+# def get_env_variable(var_name):
+#   try:
+#     return os.environ[var_name]
+#   except KeyError:
+#     error_msg = 'Set the {} environment variable'.format(var_name)
+#     raise ImproperlyConfigured(error_msg)
+
+
+# SECRET_KEY = get_env_variable('DJANGO_SECRET')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -25,10 +35,14 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -41,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', ## 이거 추가!! 위치 중요!!!
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -48,6 +63,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware', ## 이거 추가!!
 ]
 
 ROOT_URLCONF = "mysite.urls"
@@ -131,4 +147,9 @@ BOOTSTRAP5 = {
     "set_placeholder": False,
 }
 
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
