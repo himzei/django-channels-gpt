@@ -131,4 +131,4 @@ BOOTSTRAP5 = {
     "set_placeholder": False,
 }
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+

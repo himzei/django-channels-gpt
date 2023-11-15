@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import RolePlayingRoom
 from .forms import RolePlayingRoomForm
 
+
 @admin.register(RolePlayingRoom)
 class RolePlayingRoomAdmin(admin.ModelAdmin):
     form = RolePlayingRoomForm

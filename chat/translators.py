@@ -2,11 +2,10 @@ from typing import Literal
 import requests
 from bs4 import BeautifulSoup
 
+
 def google_translate(
-        text: str,
-        source: Literal["auto", "en", "ko"],
-        target: Literal["en", "ko"])\
-:
+    text: str, source: Literal["auto", "en", "ko"], target: Literal["en", "ko"]
+):
     text = text.strip()
     if not text:
         return ""
