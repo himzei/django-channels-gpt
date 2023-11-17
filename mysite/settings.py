@@ -28,7 +28,9 @@ if env_path.is_file():
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-6g^v1=s!40q&+611*jjozoi*5s48aa(j6w0q8ox)^o6pod(ekx"
+with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
+    SECRET_KEY = f.read().strip()
+# SECRET_KEY = "django-insecure-6g^v1=s!40q&+611*jjozoi*5s48aa(j6w0q8ox)^o6pod(ekx"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -133,7 +135,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -148,7 +150,8 @@ BOOTSTRAP5 = {
 }
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
